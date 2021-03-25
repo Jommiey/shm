@@ -8,8 +8,18 @@
 
 #define SHMSIZE 128
 
+void write_pid_to_file()
+{
+    FILE *fp;
+    fp = fopen("./pid.txt", "w+");
+    fprintf(fp, "%d", getpid());
+    fclose(fp);
+}
+
 int main()
 {
+    write_pid_to_file();
+
     // Get segment.
     key_t key = 4534;
     int shmid = shmget(key, SHMSIZE, 0666);
