@@ -13,9 +13,11 @@ int main()
     fclose(fp);
 
     // Wait until we are killed.
-    while (true)
-    {
-        printf("Waiting to be killed.");
-        sleep(1);
-    }
+    printf("Before\n");
+    sigset_t signal_set;
+    int sig = 0;
+    sigemptyset(&signal_set);
+    sigaddset(&signal_set, SIGINT);
+    sigwait(&signal_set, &sig);
+    printf("After\n");
 }
