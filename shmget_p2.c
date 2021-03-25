@@ -18,6 +18,7 @@ void write_pid_to_file()
 
 int main()
 {
+    // To make the pid available for the producer of messages.
     write_pid_to_file();
 
     // Get segment.
