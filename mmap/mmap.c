@@ -4,6 +4,9 @@
 #include <string.h>
 #include <unistd.h>
 
+/* mmap program using a child and a parent to communicate 
+ * through shared memory. */
+
 void* create_shared_memory(size_t size)
 {
     int protection = PROT_READ | PROT_WRITE;
@@ -16,9 +19,14 @@ int main()
     char parent_message[] = "hello";
     char child_message[] = "goodbye";
 
-    void* shmem = create_shared_memory(128);
+    int* shmem = create_shared_memory(128);
     printf("Size of parent_message: %lu\n", sizeof(parent_message));
     memcpy(shmem, parent_message, sizeof(parent_message));
+    for (int i = 0; i < sizeof(shmem); i++)
+    {
+        printf("%d", shmem[0]);
+    }
+
     int pid = fork();
 
     if (pid == 0)
