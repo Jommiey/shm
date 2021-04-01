@@ -31,13 +31,13 @@ int main() {
      copyMemory(1000,strlen(src), src, dest);
 
      clock_gettime(CLOCK_REALTIME, &ts2);
-     printf("%ld.%09ld\n", (long)(ts2.tv_sec - ts1.tv_sec),
-      ts2.tv_nsec - ts1.tv_nsec);
+     //printf("%ld.%09ld\n", (long)(ts2.tv_sec - ts1.tv_sec),
+    //  ts2.tv_nsec - ts1.tv_nsec);
      tsTot += (int) ts2.tv_nsec - (int) ts1.tv_nsec;
    }
 
    tsAvr = tsTot / loops;
-   printf("the averege time was: %ld\n", tsAvr);
+   printf("the average time was: %ld\n", tsAvr);
 
 
 }
